@@ -1,0 +1,51 @@
+{% include "navigation.html"%}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<h1 class="text-center">{{user}}'s order</h1>
+{% if order_list %}
+<table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Buyer</th>
+            <th colspan="2" ></th>
+          </tr>
+        </thead>
+{% for order in order_list %}
+        <tbody>
+          <tr>
+            <th scope="row">{{ order.food_name }}</th>
+            <td>{{ order.food_price }}</td>
+            <td>{{ order.food_num }}</td>
+            <td>{{order.cost}}</td>
+            <td>{{order.buyer.user_name}}</td>
+            <td>
+                <a href={% url 'food_detail' order.food_id %} class="btn btn-info btn-sm active" role="button" aria-pressed="true">More about commodity</a>
+            </td>
+            {% if order.has_complete %}
+            <td>
+                <a href={% url 'complete' order.food_id %} class="btn btn-success btn-sm disabled" role="button" aria-pressed="true" style="width:120px" >Completed</a>
+            </td>
+            {% else %}
+            <td>
+                <a href={% url 'complete' order.food_id %} class="btn btn-success btn-sm disabled" role="button" aria-pressed="true" style="width:120px" >Uncompleted</a>
+            </td>
+            {% endif %}
+          </tr>
+        </tbody>
+{% endfor %}
+</table>
+{% else %}
+<table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Address</th>
+          </tr>
+        </thead>
+{% endif %}

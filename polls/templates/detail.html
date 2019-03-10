@@ -1,0 +1,55 @@
+{% include "navigation.html"%}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<h1 class="text-center">Selling Commodity</h1>
+<div style="width:60%;margin:0 auto">
+{% if food_list %}
+<table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Seller</th>
+            <th scope="col">Name</th>
+            <th colspan="3" style="text-align:center">Operations</th>
+          </tr>
+        </thead>
+{% for food in food_list %}
+        <tbody>
+          <tr>
+            <td>{{ food.upload_user.user_name }}</td>
+            <td>{{ food.food_name }}</td>
+            <td style="text-align:center">
+                <a href={% url 'food_detail' food.food_id %}  class="btn btn-info active" role="button" aria-pressed="true" >More Information</a>
+            </td>
+            <td style="text-align:center">
+                <a href={% url 'food_delete' food.food_id %}  class="btn btn-danger active" role="button" aria-pressed="true" onclick="return sumbit_sure()">Put off sale</a>
+                <script language="javascript">
+                        function sumbit_sure(){
+                        var gnl=confirm("Sure to delete?");
+                        if (gnl==true){
+                        return true;
+                        }
+                        else{
+                        return false;
+                        }
+                        }
+                    </script>
+            </td>
+          </tr>
+        </tbody>
+{% endfor %}
+</table>
+{% else %}
+<table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Seller</th>
+            <th scope="col">Name</th>
+            <th scope="col">Operations</th>
+          </tr>
+        </thead>
+</table>
+{% endif %}
+<div align="center">
+  <a href="/polls/add"  class="btn btn-primary active" role="button" aria-pressed="true" style="width:250px;">Add Food</a>
+</div>
+</div>

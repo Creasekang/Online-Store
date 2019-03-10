@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+        <meta charset="UTF-8">
+        <title>Online Shop</title>
+        <style>
+            .box{
+                background-color:white;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%,-50%);
+            }
+            .title{
+                position:absolute;
+                top:30%;
+                left:50%;
+                transform:translate(-50%,-50%);
+            }
+        </style>
+</head>
+<body>
+<div class="title">
+<h1 class="text-center">Register</h1>
+</div>
+<div class="box">
+<form action="register" method="post">
+    {% csrf_token %}
+      <div class="form-group" align="center">
+        <input type="text" class="form-control" placeholder="UserName"  style="width:250px;" name="uname">
+      </div>
+      <div class="form-group" align="center">
+        <input type="text" class="form-control" placeholder="Password"  style="width:250px;" name="upassword">
+      </div>
+      <div align="center">
+        <button type="submit" class="btn btn-primary"  style="width:250px;">Submit</button>
+      </div>
+  </form>
+</div>
+</body>

@@ -1,0 +1,42 @@
+{% include "navigation.html"%}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<h1 class="text-center">User Detail</h1>
+<head>
+    <meta charset="UTF-8">
+    <title>Online Shop</title>
+</head>
+<body>
+    {% if user %}
+    <div>
+        <div align="center">
+            <h3 class="text-center">Photo</h3>
+            <img src="/static/media/img/{{user.user_id}}/{{user.user_id}}pic.jpg">
+        </div>
+        <div style="width:60%;margin:0 auto">
+            <h3 class="text-center">Information</h3>
+            <table class="table table-striped">
+                <tr scope="row">
+                    <th>UserName:</th>
+                    <td>{{user.user_name}}</td>
+                </tr>
+                <tr>
+                    <th>PhoneNumber:</th>
+                    <td>{{user.phone_num}}</td>
+                </tr>
+                <tr>
+                    <th>Address:</th>
+                    <td>{{user.address}}</td>
+                </tr>
+            </table>
+            <div align="center">
+                <a href={% url 'user_modify'  %} class="btn btn-primary btn-lg" role="button" aria-pressed="true"  style="width:250px;">Modify</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+

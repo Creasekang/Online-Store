@@ -1,0 +1,12 @@
+<h1>a</h1>
+{% if user_list %}
+    <ul>
+    {% for user in user_list %}
+    <h3>Id:</h3>{{ user.user_id }}</a>
+    <h3>Name:</h3>{{ user.user_name }}</a>
+    <h3>Password:</h3>{{ user.user_password }}</a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

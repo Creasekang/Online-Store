@@ -1,0 +1,49 @@
+{% include "navigation.html"%}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<h1 class="text-center">{{user}}'s shopping cart</h1>
+{% if order_list %}
+<table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total Price</th>
+            <th colspan="5"></th>
+          </tr>
+        </thead>
+{% for order in order_list %}
+        <tbody>
+          <tr>
+            <th scope="row">{{ order.food_name }}</th>
+            <td>{{ order.food_price }}</td>
+            <td>{{ order.food_num }}</td>
+            <td>{{order.cost}}</td>
+            <td>{{address}}</td>
+            <td>
+                <a href={% url 'food_detail' order.food_id %} class="btn btn-info btn-sm active" role="button" aria-pressed="true">More about commodity</a>
+            </td>
+            <td>
+                <a href={% url 'plus' order.food_id %} class="btn btn-primary btn-sm active" role="button" aria-pressed="true" >Add One More</a>
+            </td>
+            <td>
+                <a href={% url 'minus' order.food_id %} class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Subtract one</a>
+            </td>
+            <td>
+                <a href={% url 'pay' order.food_id %} class="btn btn-success btn-sm active" role="button" aria-pressed="true">Buy</a>
+            </td>
+          </tr>
+        </tbody>
+{% endfor %}
+</table>
+{% else %}
+<table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total Price</th>
+          </tr>
+        </thead>
+{% endif %}

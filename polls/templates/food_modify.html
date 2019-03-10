@@ -1,0 +1,70 @@
+<!--<body>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        上传图片： <input type="file" name="picture"><br />
+        商品名称： <input type="text" name="food_name" value="{{food.food_name}}"><br />
+        商品定价： <input type="text" name="food_price" value="{{food.food_price}}">元<br />
+        商品存量： <input type="text" name="food_quantity" value="{{food.food_quantity}}">份<br />
+        商品介绍： <input type="text" name="food_intro_text" value="{{food.food_intro_text}}"
+            style="width:500px;height:200px;">
+        <br />
+        <div id="InputsWrapper">
+        </div>
+        <input type="submit" name="edit" value="修改">
+    </form>
+</body>
+-->
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>modify</title>
+    <script src="{% static 'jQuery v3.3.1.js' %}"></script>
+    <script src="{% static 'add.js' %}"></script>
+</head>
+
+<body>
+
+
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group" align="center">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="name" name="food_name" value="{{food.food_name}}" style="width:500px;">
+            <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+        </div>
+        <div class="form-group" align="center">
+            <label for="exampleInputPassword1">Price</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="￥" name="food_price"
+                value="{{food.food_price}}" style="width:500px;">
+        </div>
+
+        <div class="form-group" align="center">
+            <label for="exampleInputPassword1">Quantity</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="food_quantity"
+                value="{{food.food_quantity}}" style="width:500px;">
+        </div>
+        <div class="form-group" align="center">
+            <label for="exampleInputPassword1">Introduction</label>
+            <input type="text" class="form-control" text-align="left" name="food_intro_text"
+                value="{{food.food_intro_text}}" style="width:500px;height:200px;">
+        </div>
+        <div class="form-group" align="center">
+            <label for="exampleInputPassword1">Upload Picture</label> <input type="file" name="picture" style="width:200px;">
+        </div>
+        <div align="center">
+            <button type="submit" name="edit" class="btn btn-primary">Modify</button>
+        </div>
+    </form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>网上商城</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #e7e7e7;
+            background-color: #f3f3f3;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: #666;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        li a.active {
+            color: white;
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <li><a href={% url 'food_index'  %}>Home</a></li>
+        <li><a href={% url 'user_detail'  %}>User Information</a></li>
+        <li><a href={% url 'detail' %}>Selling Commmodiy</a></li>
+        <li><a href={% url 'pre_order' %}>Shoping Cart</a></li>
+        <li><a href={% url 'order' %}>Buying Order</a></li>
+        <li><a href={% url 'sell_order' %}>Selling Order</a></li>
+        {% if login == False %}
+        <li style="float:right"><a href={% url 'register'  %}>Register</a></li>
+        <li style="float:right"><a href={% url 'login'  %}>Login</a></li>
+        {% else %}
+        <li style="float:right"><a href={% url 'register'  %}>Login</a></li>
+        <li style="float:right"><a href={% url 'login'  %}>Logout</a></li>
+        <li style="float:right"><a href={% url 'user_detail'  %}>{{u_name}}</a></li>
+        {% endif %}
+    </ul>
+</body>
+
+</html>

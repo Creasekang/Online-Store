@@ -1,0 +1,56 @@
+<!--<body>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        电话号码： <input type="text" name="phone_num" value="{{user.phone_num}}"><br />
+        地址： <input type="text" name="address" value="{{user.address}}"><br />
+        上传头像： <input type="file" name="picture">
+        <br />
+        <div id="InputsWrapper">
+        </div>
+        <input type="submit" name="edit" value="修改">
+    </form>
+</body>
+-->
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>modify</title>
+    <script src="{% static 'jQuery v3.3.1.js' %}"></script>
+    <script src="{% static 'add.js' %}"></script>
+</head>
+
+<body>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group" align="center">
+            <label for="exampleInputEmail1">Phone Number</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="13888888888" name="phone_num" value="{{user.phone_num}}" style="width:500px;">
+            <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+        </div>
+        <div class="form-group" align="center">
+            <label for="exampleInputPassword1">Address</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="123 Wall St" name="address"
+                value="{{user.address}}" style="width:500px;">
+        </div>
+
+        <div class="form-group" align="center">
+            <label for="exampleInputPassword1">Upload Avater</label>
+             <input type="file" name="picture" style="width:200px;">
+        </div>
+        <div align="center">
+            <button type="submit" name="edit" class="btn btn-primary">Modify</button>
+        </div>
+    </form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+{% include "navigation.html"%}
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<head>
+        <meta charset="UTF-8">
+        <title>Online Shop</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            .second{
+                float: left;
+                margin-left: 10%;
+                margin-top:3%;
+                margin-bottom:3%;
+            }
+        .keep{
+            display:flex;
+           align-items:center; 
+           
+           justify-content:center;
+        }
+        img{
+            
+            width:auto; 
+            height:auto;
+            
+        }
+        </style>
+</head>
+
+<h1 class="text-center">Online Shop</h1>
+{% if food_list %}
+{% for food in food_list %}
+<div id="main" style="width:100%">
+    <div class="second" id="left" >
+    <div class="card" style="width: 15rem;">
+        <div class="kepp"  style="width: 15rem; height: 15rem;display:flex;
+        align-items:center; 
+        justify-content:center;">
+        <img src="/static/media/img/{{food.upload_user.user_id}}/food/{{food.food_id}}pic.jpg"  class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">{{food.food_name}}</h2>
+          <p class="card-text">{{ food.food_intro_text }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Price:  {{food.food_price}}</li>
+          <li class="list-group-item">Seller: {{ food.upload_user.user_name }}</li>
+        </ul>
+        <div class="card-body">
+          <a href={% url 'buy' food.food_id %} class="card-link">Buy</a>
+          <a href={% url 'food_detail' food.food_id %} class="card-link">For Details</a>
+        </div>
+    </div>
+</div>
+</div>
+{% endfor %}
+{% else %}
+    <p>No polls are available</p>
+{% endif %}
